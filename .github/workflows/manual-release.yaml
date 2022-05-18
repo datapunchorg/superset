@@ -34,6 +34,6 @@ jobs:
 
       - name: Build and publish the Docker image
         run: |
-          suffix=$(date +%s)
-          docker build -t ghcr.io/datapunchorg/superset:superset-$suffix .
+          suffix=${{ github.sha }}
+          docker build --target lean -t ghcr.io/datapunchorg/superset:superset-$suffix .
           docker push ghcr.io/datapunchorg/superset:superset-$suffix
